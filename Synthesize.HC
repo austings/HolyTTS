@@ -13,7 +13,7 @@ class Phoneme{
 
 } phonemes[LETTERS];
 
-phonemes = CAlloc(sizeof(Phoneme)*LETTERS);
+//phonemes = CAlloc(sizeof(Phoneme)*LETTERS);
 
 // Define an array of phonemes
 /*Phoneme phonemes[3] = {
@@ -92,7 +92,7 @@ U0 MainVoice()
 
 
  Formants *speakMe = phonemes[0].formantQue->last;
- for(j=QueCnt(phonemes[0].formantQue);j!=-1;j--)
+ for(j=QueCnt(phonemes[0].formantQue);j!=-1;j--)
  {
   for(i=phonemes[0].duration;i!=0;i--);
   {
