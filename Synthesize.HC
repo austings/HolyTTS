@@ -32,7 +32,7 @@ U0 InsertHertz(F64 value)
 
 U0 MainVoice()
 {
- I64 i,j;//for loops
+ I64 i,j;//for loops
  phonemes[0].name= StrNew("A");
  phonemes[0].duration = 10;
  
@@ -95,9 +95,6 @@ U0 MainVoice()
  {
   for(i=0;i<phonemes[0].duration;i++)
   {
-  // P
-
-
    Snd(Freq2Ona(speakMe->freqHertz));
    Sleep(1);
   }
@@ -128,4 +125,4 @@ U0 MainVoice()
  Free(phonemes[0]);
 }
 
-MainVoice;
+MainVoice;
