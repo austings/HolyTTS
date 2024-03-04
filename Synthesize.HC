@@ -8,12 +8,12 @@ class Formants:CQue{
 class Phoneme{
 
  U8* name;
+ I64 duration;
  Formants *formantQue;
- F64 duration;
 
 } phonemes[LETTERS];
 
-//phonemes = CAlloc(sizeof(Phoneme)*LETTERS);
+//phonemes = CAlloc(sizeof(Phoneme)*LETTERS);
 
 // Define an array of phonemes
 /*Phoneme phonemes[3] = {
@@ -32,12 +32,11 @@ U0 InsertHertz(F64 value)
 
 U0 MainVoice()
 {
- I64 i,j;//for loops
-
+ I64 i,j;//for loops
  phonemes[0].name= StrNew("A");
- phonemes[0].duration = 5.0;
+ phonemes[0].duration = 10;
  
- QueInit(&phonemes[0].formantQue);
+ QueInit(&(phonemes[0].formantQue));
  
  for(i=0;i<LETTERS;i++)
  {
@@ -87,20 +86,23 @@ U0 MainVoice()
    break;
   }
  }
- //Print("\n%d\n", QueCnt(phonemes[0].formantQue));
+ Print("\n%f\n", phonemes[0].duration);
  //Formants *printMe = phonemes[0].formantQue;
-
+ 
 
  Formants *speakMe = phonemes[0].formantQue->last;
  for(j=QueCnt(phonemes[0].formantQue);j!=-1;j--)
  {
-  for(i=phonemes[0].duration;i!=0;i--);
+  for(i=0;i<phonemes[0].duration;i++)
   {
+  // P
+
+
    Snd(Freq2Ona(speakMe->freqHertz));
-   Sleep(10);
+   Sleep(1);
   }
   Snd;
-  Print("\n%f\n\n", speakMe->freqHertz);
+  //Print("\n%f\n\n", speakMe->freqHertz);
 
   speakMe = speakMe->last;
  }
