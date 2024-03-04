@@ -35,7 +35,7 @@ U0 MainVoice()
  I64 i,j;//for loops
 
  phonemes[0].name= StrNew("A");
- phonemes[0].duration = 5000.0;
+ phonemes[0].duration = 5.0;
  
  QueInit(&phonemes[0].formantQue);
  
@@ -89,11 +89,10 @@ U0 MainVoice()
  }
  //Print("\n%d\n", QueCnt(phonemes[0].formantQue));
  //Formants *printMe = phonemes[0].formantQue;
- //Print("\n%f\n\n", printMe->freqHertz);
 
 
- Formants *speakMe = phonemes[0].formantQue;
- for(j=QueCnt(phonemes[0].formantQue);j!=0;j--)
+ Formants *speakMe = phonemes[0].formantQue->last;
+ for(j=QueCnt(phonemes[0].formantQue);j!=-1;j--)
  {
   for(i=phonemes[0].duration;i!=0;i--);
   {
@@ -101,8 +100,9 @@ U0 MainVoice()
    Sleep(10);
   }
   Snd;
+  Print("\n%f\n\n", speakMe->freqHertz);
 
-  speakMe = speakMe->next;
+  speakMe = speakMe->last;
  }
 
   
@@ -110,7 +110,7 @@ U0 MainVoice()
  
  /*Snd(Freq2Ona(500));
  
- for(i=phonemes[0].duration;i!=0;i--);
+ for(i=phonemes[0].duration;i!=0;i--);
  {
   Snd(Freq2Ona(phonemes[0].formants[1]));
   Sleep(10);
